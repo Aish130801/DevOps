@@ -1,0 +1,19 @@
+- name: Tasks on VM
+  hosts: all
+  connection: local
+  gather_facts: false
+  tasks:
+  - name: Add the user named "student" with the password "student123"
+    ansible.builtin.user:
+    name: johnd
+    password: student123
+
+  - name: Make the student user a Sudoer only for the command "/usr/bin/apt"
+    
+  - name: Install the package "tree"
+    ansible.builtin.apt:
+    name: tree
+
+  - name: Get the list of partitions on the machine, that is /etc/partitions file
+    ansible.builtin.shell:
+    command: lsblk
