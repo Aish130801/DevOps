@@ -1,0 +1,20 @@
+sudo docker pull ubuntu:22.04
+docker image tag <base image-id> ubuntu1:22.04
+docker image tag <base image-id> ubuntu2:22.04
+docker image tag <base image-id> ubuntu3:22.04
+docker image tag <base image-id> ubuntu4:22.04
+
+docker network create network1
+docker network create network2
+
+docker run -it -d -h ubuntu-1 --net network1 -v /var/www/html:/www ubuntu1:22.04
+docker exec -it <first 3 characters of id> bash
+
+docker run -it -d -h ubuntu-2 --net network1 -v /var/www/html:/www ubuntu2:22.04
+docker exec -it <first 3 characters of id> bash
+
+docker run -it -d -h ubuntu-3 --net network2 -v /var/www/html:/www ubuntu3:22.04
+docker exec -it <first 3 characters of id> bash
+
+docker run -it -d -h ubuntu-4 --net network2 -v /var/www/html:/www ubuntu4:22.04
+docker exec -it <first 3 characters of id> bash
