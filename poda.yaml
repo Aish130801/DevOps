@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poda
+  labels:
+    app: poda
+    type: webserver
+spec:
+  template:
+    metadata:
+      name: poda
+      labels:
+        app: poda
+        type: webserver
+    spec:
+      containers:
+        - name: container-1
+          image: httpd
+        - name: container-2
+          image: nginx
+  replicas: 2
+  selector:
+    matchLabels:
+      type: webserver
+
+
+
+
+
+
+
+

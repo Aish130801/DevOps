@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kub1assgn
+  labels:
+    app: kub1assgn
+    type: webserver
+spec:
+  template:
+    metadata:
+      name: kub1assgn
+      labels:
+        app: kub1assgn
+        type: webserver
+    spec:
+      containers:
+        - name: container-1
+          image: ngnix
+        - name: container-2
+          image: ubuntu
+  replicas: 2
+  selector:
+    matchLabels:
+      type: webserver
+
+
